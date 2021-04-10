@@ -3,14 +3,23 @@ const validationInputEl = document.querySelector("#validation-input");
 
 function onInputBlur() {
   if (validationInputEl.value.length === Number(symbolLimit)) {
-    validationInputEl.classList.remove("invalid");
-    validationInputEl.classList.add("valid");
+    classToggle("valid", "invalid");
+
+    // validationInputEl.classList.remove("invalid");
+    // validationInputEl.classList.add("valid");
   }
 
   if (validationInputEl.value.length !== Number(symbolLimit)) {
-    validationInputEl.classList.remove("valid");
-    validationInputEl.classList.add("invalid");
+    classToggle("invalid", "valid");
+
+    // validationInputEl.classList.remove("valid");
+    // validationInputEl.classList.add("invalid");
   }
+}
+
+function classToggle(addClass, removeClass) {
+  validationInputEl.classList.remove(removeClass);
+  validationInputEl.classList.add(addClass);
 }
 
 validationInputEl.addEventListener("blur", onInputBlur);
